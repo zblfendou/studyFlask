@@ -328,3 +328,145 @@ Craps赌博游戏
 # name='zhang san'.title()
 # date='2024-05-04'
 # print(f'{name}您好,今天是{date}')
+
+# def city_country(city,country):
+#     return f"{city}, {country}"
+#
+# print(city_country('深圳','中国'))
+# print(city_country('上海','中国'))
+# print(city_country('北京','中国'))
+
+"""
+    面向对象编程
+"""
+
+# class CuteCat:
+#     def __init__(self,cat_name,cat_color,cat_weight):
+#         self.name = cat_name
+#         self.color = cat_color
+#         self.weight = cat_weight
+#
+#     @staticmethod
+#     def speak():
+#         print('喵喵喵')
+#
+# cat = CuteCat('mili','白色','5.6')
+# print(cat.name)
+# print(cat.color)
+# print(cat.weight)
+# cat.speak()
+"""
+    对象继承
+"""
+# class Mammal:
+#     def __init__(self, name, sex):
+#         self.name = name
+#         self.sex = sex
+#
+#     def breathe(self):
+#         print(self.name + '在呼吸')
+#
+#     def poop(self):
+#         print(self.name + '在拉屎')
+#
+# class Human(Mammal):
+#     def __init__(self, name, sex, age):
+#         super().__init__(name, sex)
+#         self.age = age
+#
+#     def eat(self):
+#         print(self.name + '在吃东西')
+#
+#     def sleep(self):
+#         print(self.name + '在睡觉')
+#
+# class Cat(Mammal):
+#     def __init__(self, name, sex, color):
+#         super().__init__(name, sex)
+#         self.color = color
+#
+#     def eat(self):
+#         print(self.name + '在吃鱼')
+#
+#     def sleep(self):
+#         print(self.name + '在睡觉')
+#
+#
+# cat = Cat('mili', '公', '白色')
+# cat.poop()
+# cat.eat()
+# cat.sleep()
+
+"""
+    读写文件
+"""
+# from pathlib import Path
+# path = Path('/home/zbl/a.key')
+# # 读文件
+# content = path.read_text(encoding='utf-8')
+# print(content)
+# lines = content.splitlines()
+# for line in lines:
+#     print(line)
+# # 写文件
+# path.write_text('hello world', encoding='utf-8')
+"""
+    写文件作业
+"""
+# from pathlib import Path
+#
+# names = ''
+# user_input = input("请输入访客名字(完成所有名字输入后,请输入q终止程序):")
+# while user_input != 'q':
+#     names += user_input + '\n'
+#     user_input = input("请输入访客名字(完成所有名字输入后,请输入q终止程序):")
+#
+# path = Path('/home/zbl/访客名单.txt')
+# path.write_text(names, encoding='utf-8')
+"""
+    try except 异常捕获
+"""
+# try:
+#     print(1 / 1)
+# except ZeroDivisionError:
+#     print('除数不能为0')
+# else:
+#     print('没有发生异常')
+# finally:
+#     print('无论是否发生异常，都会执行')
+"""
+    异常捕获作业两个数字相加
+"""
+# a = input('请输入第一个数字:')
+# b = input('请输入第二个数字:')
+# try:
+#     result = int(a) + int(b)
+# except ValueError:
+#     print('发生异常请输入数字')
+# else:
+#     print(result)
+# finally:
+#     print('运行结束')
+"""
+    断言 assert  测试用例 ,以test_开头即可 pytest测试库
+"""
+# def my_adder(x,y):
+#     return x+y
+#
+# def test_positive_with_positive():
+#     assert my_adder(1,2) == 3
+
+"""
+    fixture 装饰器
+"""
+
+
+class Employee:
+    def __init__(self, first_name, last_name, salary):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.salary = salary
+
+    def give_raise(self, amount=5000):
+        self.salary += amount
+
