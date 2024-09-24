@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+</head>
+<body>
+<form action="/register" method="post">
+    {#帐号:<input type="text" name="user_name">
+        <br>
+        密码:<input type="password" name="password">
+        <br>
+        确认密码:<input type="password" name="rePassword">
+        <br>
+        <input type="submit" name="submit">#}
+    {{ form.user_name.label }}
+    {{ form.user_name }}
+    <br>
+    {{ form.password.label }}
+    {{ form.password }}
+    <br>
+    {{ form.rePassword.label }}
+    {{ form.rePassword }}
+    <br>
+    <input type="submit" name="submit">
+</form>
+</body>
+</html>

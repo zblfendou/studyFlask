@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+hello world
+<br>
+{{ data }}
+<br>
+{{ data['name'] }}
+<br>
+{{ data.name }}
+<br>
+mylist:{{ data.mylist | li2 }}
+<br>
+count:{{ data.mylist[1]+data.mylist[2] }}
+<br>
+{{ 'hello_world' | replace('hello','hi') }}
+{# https://jinja.palletsprojects.com/en/2.9.x/templates/#upper#}
+</body>
+</html>
