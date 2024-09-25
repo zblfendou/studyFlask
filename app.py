@@ -1,12 +1,21 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():  # put application's code here
-    first = "hello World Mr. Zhang."
-    return first.capitalize()
+@app.route('/login', methods=['GET', 'POST'])
+def login():  # put application's code here
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        print(username, password)
+        return redirect('/admin')
+    return render_template('login.html')
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    return render_template('admin.html')
 
 
 # string 接收任何不包含斜杠的文本
