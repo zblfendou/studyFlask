@@ -1,5 +1,3 @@
-from crypt import methods
-
 from flask import Flask, render_template, request, redirect, Blueprint
 
 app = Flask(__name__)
