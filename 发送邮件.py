@@ -11,7 +11,7 @@ msg['subject'] = '360 days'  # 邮件主题
 
 # 3.连接发送邮件
 server = smtplib.SMTP('smtp.126.com', 25)  # 发件人邮箱中的SMTP服务器，端口是25
-server.login("zhangbinlei2023@126.com", "RBemgPeqbNshKzgL")  # 发件人邮箱账号密码
+server.login("zhangbinlei2023@126.com", "RBemgPeqbNshKzgLbf")  # 发件人邮箱账号密码
 server.sendmail('zhangbinlei2023@126.com', 'zhangbinlei@xinnet.com', msg.as_string())  # 发送邮件
 server.quit()
 
