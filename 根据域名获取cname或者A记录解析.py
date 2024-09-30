@@ -11,12 +11,12 @@ def get_record(domain: str, type: str) -> list:
        :param type: Record type (A, CNAME, or TXT)
        :return: List of DNS records
    """
-    dns_data_type = dns.rdatatype.from_text(type.upper())
     try:
+        dns_data_type = dns.rdatatype.from_text(type.upper())
         answers = dns.resolver.resolve(domain, dns_data_type)
         return [rdata.to_text().rstrip(".") if dns_data_type == dns.rdatatype.CNAME and rdata.to_text().endswith(
             ".") else rdata.to_text() for rdata in answers]
-    except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
+    except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer,dns.rdatatype.UnknownRdatatype):
         return []
 
 
