@@ -1,14 +1,11 @@
-from flask import Flask, render_template, request, redirect, Blueprint
+from flask import render_template, request, redirect
+from . import students
+from . import bp
 
-app = Flask(__name__)
-bp = Blueprint('bp', __name__)
 
-students = [
-    {'name': '张三', 'chinese': 80, 'math': 90, 'english': 100},
-    {'name': '王五', 'chinese': 92, 'math': 87, 'english': 80},
-    {'name': '赵六', 'chinese': 80, 'math': 88, 'english': 95},
-    {'name': '李四', 'chinese': 86, 'math': 94, 'english': 60}
-]
+@bp.route('/')
+def index():
+    return redirect('/login')
 
 
 @bp.route('/login', methods=['GET', 'POST'])
@@ -68,10 +65,3 @@ def edit():
                 stu['english'] = english
                 stu['math'] = math
         return redirect('/admin')
-    return redirect('/edit.html')
-
-
-# 注册蓝图
-app.register_blueprint(bp)
-if __name__ == '__main__':
-    app.run(debug=True)
