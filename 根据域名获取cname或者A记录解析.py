@@ -4,22 +4,22 @@ import dns.resolver
 dns.resolver.Resolver().cache = None
 
 
-def get_record(domain, type: dns.rdatatype = dns.rdatatype.CNAME):
-    data = []
+def get_record(domain: str, type: str) -> list:
+    """
+       Get DNS records for a domain and record type
+       :param domain: Domain name
+       :param type: Record type (A, CNAME, or TXT)
+       :return: List of DNS records
+   """
+    dns_data_type = dns.rdatatype.from_text(type.upper())
     try:
-        answers = dns.resolver.resolve(domain, type)
-        for rdata in answers:
-            text = rdata.to_text()
-            if dns.rdatatype.CNAME == type and text.endswith("."):
-                text = text[:-1]
-            data.append(text)
-        return data
-    except dns.resolver.NXDOMAIN:
-        return data
-    except dns.resolver.NoAnswer:
-        return data
+        answers = dns.resolver.resolve(domain, dns_data_type)
+        return [rdata.to_text().rstrip(".") if dns_data_type == dns.rdatatype.CNAME and rdata.to_text().endswith(
+            ".") else rdata.to_text() for rdata in answers]
+    except (dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
+        return []
 
 
 # 示例
-domain = "www.xinnet.com"
-print(get_record(domain, dns.rdatatype.CNAME))
+domain = "niujf.top"
+print(get_record(domain, 'a'))
