@@ -16,5 +16,4 @@ for start_num in range(0, 250, 25):
         movie_name = movie.string
         if '/' not in movie_name:
             top250_movie_names.append(movie_name)
-
 print(top250_movie_names)
